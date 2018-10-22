@@ -1,7 +1,0 @@
-﻿$axure.loadCurrentPage(
-(function() {
-    var _ = function() { var r={},a=arguments; for(var i=0; i<a.length; i+=2) r[a[i]]=a[i+1]; return r; }
-    var _creator = function() { return _(b,c,d,e,f,g,h,g,i,_(j,k),l,[m,n,o],p,_(q,r,s,t,u,v,w,_(),x,_(y,z,A,B,C,_(D,E,F,G),H,null,I,B,J,B,K,L,M,null,N,O,P,Q,R,S,T,O),U,_(),V,_(W,_(X,Y,Z,[_(X,ba,bb,g,bc,[_(bd,be,X,bf,bg,[])])])),bh,_(bi,[])),bj,_(),bk,_());}; 
-var b="url",c="练习3.html",d="generationDate",e=new Date(1539516495469),f="isCanvasEnabled",g=false,h="isAdaptiveEnabled",i="sketchKeys",j="",k="s0",l="variables",m="a",n="b",o="c",p="page",q="packageId",r="cdb4960f1ccb46d0a97e4390adb3a85d",s="type",t="Axure:Page",u="name",v="练习3",w="notes",x="style",y="baseStyle",z="627587b6038d43cca051c114ac41ad32",A="pageAlignment",B="near",C="fill",D="fillType",E="solid",F="color",G=0xFFFFFFFF,H="image",I="imageHorizontalAlignment",J="imageVerticalAlignment",K="imageRepeat",L="auto",M="favicon",N="sketchFactor",O="0",P="colorStyle",Q="appliedColor",R="fontName",S="Applied Font",T="borderWidth",U="adaptiveStyles",V="interactionMap",W="onLoad",X="description",Y="页面载入时",Z="cases",ba="Case 1",bb="isNewIfGroup",bc="actions",bd="action",be="setPanelState",bf="设置 动态面板状态",bg="panelsToStates",bh="diagram",bi="objects",bj="masters",bk="objectPaths";
-return _creator();
-})());
