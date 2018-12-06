@@ -1,4 +1,4 @@
-﻿// 8.0.0.3366. Generated 11/10/2017 12:00:54 AM UTC
+﻿// 8.0.0.3379. Generated 9/4/2018 6:40:43 PM UTC
 
 //***** messagecenter.js *****//
 if (typeof console == 'undefined') console = {
@@ -4641,7 +4641,7 @@ $axure.internal(function($ax) {
                     var lines = value.split(/\r\n|\n/);
                     //if we are dealing with only one line, just reuse the old one
                     if(spans.length === 1 && lines.length === 1) {
-                        spans[0].innerHTML = value;
+                        $(spans[0]).text(value);
                         return;
                     }
 
@@ -5413,20 +5413,20 @@ $axure.internal(function($ax) {
         if(!info || info.active == active) return;
         info.active = active;
 
-        if(active) var value = info.text;
-        else if(!ANDROID) value = clearText ? '' : document.getElementById(inputId).value;
+        if(active) var text = info.text;
+        else if(!ANDROID) text = clearText ? '' : document.getElementById(inputId).value;
         else {
             var currentText = document.getElementById(inputId).value;
-            if(!clearText) value = currentText;
-            else if(currentText == info.text) value = "";
+            if(!clearText) text = currentText;
+            else if(currentText == info.text) text = "";
             else {
                 var lastIndex = currentText.lastIndexOf(info.text);
                 //here i am assuming the text is always inserted in front
-                value = currentText.substring(0, lastIndex);
+                text = currentText.substring(0, lastIndex);
             }
         }
 
-        $ax.style.SetWidgetPlaceholder(elementId, active, value, info.password);
+        $ax.style.SetWidgetPlaceholder(elementId, active, text, info.password);
     };
     _placeholderManager.updatePlaceholder = _updatePlaceholder;
 
@@ -7157,8 +7157,13 @@ $axure.internal(function($ax) {
     };
     _repeaterManager.applySuffixToElementId = _applySuffixToElementId;
 
-    var _removeSuffixFromElementId = function(id) {
-        if (id.indexOf('_') != -1) return id.split('_', 1)[0];
+    var _removeSuffixFromElementId = function (id) {
+        var suffixId = id.indexOf('_');
+        if(suffixId != -1) return id.substr(0, suffixId);
+
+        var partId = id.indexOf('p');
+        if(partId != -1) return _createElementId(id.substr(0, partId), _getItemIdFromElementId(id)); // item id is after part, but before suffix
+
         return id;
     }
     _repeaterManager.removeSuffixFromElementId = _removeSuffixFromElementId;
@@ -10697,7 +10702,7 @@ $axure.internal(function($ax) {
         } else $ax.style.SetWidgetSelected(id, $ax.style.IsWidgetSelected(id), true);
     };
 
-    $ax.style.SetWidgetPlaceholder = function(id, value, text, password) {
+    $ax.style.SetWidgetPlaceholder = function(id, active, text, password) {
         var inputId = $ax.repeater.applySuffixToElementId(id, '_input');
 
         // Right now this is the only style on the widget. If other styles (ex. Rollover), are allowed
@@ -10712,7 +10717,7 @@ $axure.internal(function($ax) {
         if (height) obj.css('height', height);
         if (width) obj.css('width', width);
 
-        if(!value) {
+        if(!active) {
             try { //ie8 and below error
                 if(password) document.getElementById(inputId).type = 'password';
             } catch(e) { } 
@@ -10726,7 +10731,7 @@ $axure.internal(function($ax) {
 
             _applyCssProps(element, styleProperties, true);
             try { //ie8 and below error
-                if(password) document.getElementById(inputId).type = 'text';
+                if(password && text) document.getElementById(inputId).type = 'text';
             } catch(e) { }
         }
         obj.val(text);
