@@ -12,7 +12,7 @@
   position:absolute;
   z-index:0;
 }
-#u1_div {
+#u2_div {
   border-width:0px;
   position:absolute;
   left:0px;
@@ -28,7 +28,7 @@
   box-shadow:none;
   font-size:18px;
 }
-#u1 {
+#u2 {
   border-width:0px;
   position:absolute;
   left:21px;
@@ -37,7 +37,7 @@
   height:130px;
   font-size:18px;
 }
-#u1_text {
+#u2_text {
   border-width:0px;
   position:absolute;
   left:0px;
